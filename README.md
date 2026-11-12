@@ -1,1 +1,368 @@
 # Final-countdown
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07110e">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Final Countdown">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>Final Countdown — Study Hub</title>
+<style>
+:root{--bg:#070b0a;--panel:#101816;--panel2:#14211d;--line:#23352e;--green:#27e6a2;--green2:#a1ffd9;--muted:#91a49b;--text:#edf7f1;--red:#ff7272;--yellow:#f4d36e;--radius:18px}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#123528 0,transparent 42%),var(--bg);color:var(--text);font:15px/1.45 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;padding-bottom:88px}
+button,input,select,textarea{font:inherit}button{cursor:pointer}.app{max-width:980px;margin:auto;padding:env(safe-area-inset-top) 16px 28px}
+header{display:flex;align-items:center;justify-content:space-between;padding:22px 0 16px;gap:12px}.brand{display:flex;align-items:center;gap:11px}.logo{width:42px;height:42px;border-radius:14px;background:linear-gradient(145deg,#2df0ac,#087b56);display:grid;place-items:center;color:#04130d;font-weight:900;font-size:20px;box-shadow:0 0 24px #27e6a244}.brand h1{font-size:18px;margin:0;letter-spacing:.08em}.brand small{color:var(--muted);display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase}.date{font-size:12px;color:var(--muted);text-align:right}.header-right{display:grid;justify-items:end;gap:7px}.signature{color:var(--green)!important;font-weight:800;letter-spacing:.17em!important;font-size:10px!important}.auth-user{font-size:10px;color:var(--green2);max-width:170px;overflow-wrap:anywhere;text-align:right}
+.hero{background:linear-gradient(120deg,#11251e,#0c1713 72%);border:1px solid #24513e;border-radius:24px;padding:22px;position:relative;overflow:hidden}.hero:after{content:"";position:absolute;width:190px;height:190px;border:1px solid #36e7a322;border-radius:50%;right:-65px;top:-78px;box-shadow:0 0 0 22px #36e7a20a,0 0 0 48px #36e7a208}.eyebrow{color:var(--green);font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:800}.hero h2{font-size:clamp(26px,7vw,38px);line-height:1.05;margin:9px 0}.hero p{color:#b4c9bf;margin:0 0 18px;max-width:470px}.countdown{display:flex;gap:10px;position:relative;z-index:1}.timebox{background:#07110eaa;border:1px solid #315344;border-radius:13px;padding:10px 13px;min-width:65px;text-align:center}.timebox strong{font-size:25px;display:block;color:var(--green2);font-variant-numeric:tabular-nums}.timebox span{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em}
+.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:16px;position:relative;z-index:1}.btn{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#17231e;color:var(--text);font-weight:650}.btn.primary{background:var(--green);color:#04130d;border-color:var(--green)}.btn.small{padding:7px 10px;font-size:12px}.btn.danger{color:#ff9a9a}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}.stat,.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:15px}.stat strong{font-size:23px;color:var(--green2);display:block}.stat span{color:var(--muted);font-size:12px}
+.tabs{display:flex;gap:7px;overflow:auto;padding:4px 0 12px;scrollbar-width:none}.tabs button{white-space:nowrap;border:1px solid var(--line);background:#101815;color:var(--muted);border-radius:999px;padding:9px 13px;font-size:13px}.tabs button.active{background:#17392c;color:var(--green2);border-color:#286c4e}
+main{min-height:300px}.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:12px 0}.section-head h2{font-size:20px;margin:0}.muted{color:var(--muted)}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.card h3{font-size:15px;margin:0 0 10px}.row{display:flex;align-items:center;justify-content:space-between;gap:10px}.stack{display:grid;gap:9px}.item{background:#0b1210;border:1px solid #1e3028;border-radius:13px;padding:11px}.item-title{font-weight:650}.item small{color:var(--muted)}.pill{font-size:10px;color:var(--green2);border:1px solid #286247;border-radius:99px;padding:3px 8px}.progress{height:7px;background:#23332c;border-radius:99px;overflow:hidden;margin-top:9px}.progress i{display:block;height:100%;background:linear-gradient(90deg,#14a873,var(--green));border-radius:99px}.field{display:grid;gap:5px;margin:10px 0}.field label{font-size:12px;color:var(--muted)}input,select,textarea{width:100%;background:#080f0c;color:var(--text);border:1px solid #2a4035;border-radius:11px;padding:11px;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--green)}textarea{min-height:95px;resize:vertical}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px}.empty{text-align:center;color:var(--muted);padding:25px 10px;border:1px dashed #2b4035;border-radius:14px}.checkline{display:flex;align-items:flex-start;gap:9px}.checkline input{width:auto;margin-top:4px;accent-color:var(--green)}.bottomnav{position:fixed;bottom:0;left:0;right:0;background:#08100df2;border-top:1px solid #20342b;display:flex;justify-content:center;padding:9px 8px calc(9px + env(safe-area-inset-bottom));backdrop-filter:blur(18px);z-index:5}.bottomnav div{width:min(980px,100%);display:flex;justify-content:space-around}.bottomnav button{border:0;background:none;color:var(--muted);font-size:10px;display:grid;gap:3px;justify-items:center}.bottomnav button b{font-size:18px;font-weight:500}.bottomnav button.active{color:var(--green)}.notice{font-size:12px;color:var(--muted);margin:15px 2px}.hidden{display:none!important}.tag{font-size:11px;color:var(--yellow)}.delete{border:0;background:none;color:#d98585;font-size:12px;padding:4px}
+
+.timer-display{font-size:clamp(38px,12vw,58px);font-weight:800;letter-spacing:.04em;color:var(--green2);font-variant-numeric:tabular-nums;margin:12px 0}
+.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:5px;margin-top:14px;text-align:center}
+.weekday{font-size:10px;color:var(--muted);padding:5px 0}
+.calday{min-height:48px;border:1px solid #1e3028;border-radius:9px;background:#0b1210;padding:5px 1px;display:flex;flex-direction:column;justify-content:center;gap:2px}
+.calday b{font-size:12px}.calday small{font-size:9px;color:var(--green2)}.calday.hasstudy{background:#123326;border-color:#286b4d}.calday.today{outline:1px solid var(--green)}
+.legend{display:flex;justify-content:space-between;gap:8px;flex-wrap:wrap;margin-top:12px;color:var(--muted);font-size:11px}.legend i{display:inline-block;width:8px;height:8px;background:#27e6a2;border-radius:50%;margin-right:5px}
+@media(max-width:620px){header{align-items:flex-start}.header-right{max-width:145px}.header-right .btn{font-size:10px;padding:7px 8px}.brand h1{font-size:16px}.grid{grid-template-columns:1fr}.stats{gap:7px}.stat{padding:12px}.stat strong{font-size:20px}.hero{padding:19px}.timebox{min-width:0;flex:1;padding:9px 5px}.timebox strong{font-size:22px}.date{font-size:10px}}
+
+/* FUTURISTIC MOTION SYSTEM */
+:root{--cyan:#45d9ff;--violet:#a78bfa;--pink:#ff72c6;--lime:#b7ff67;--motion:cubic-bezier(.2,.8,.2,1)}
+html{scroll-behavior:smooth}body{overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;background:radial-gradient(circle at 12% 28%,#45d9ff0b,transparent 27%),radial-gradient(circle at 90% 58%,#a78bfa0b,transparent 30%),radial-gradient(circle at 52% 100%,#ff72c60a,transparent 35%)}
+.logo{position:relative;isolation:isolate;overflow:hidden;animation:logoGlow 4s ease-in-out infinite}
+.logo:after{content:"";position:absolute;inset:-60%;background:linear-gradient(110deg,transparent 40%,#ffffff55 50%,transparent 60%);transform:translateX(-70%) rotate(20deg);animation:logoShine 5s ease-in-out infinite;z-index:-1}
+.hero{animation:heroRise .75s var(--motion) both}.hero:before{content:"";position:absolute;inset:0;background:linear-gradient(115deg,transparent 15%,#45d9ff0b 45%,transparent 70%);transform:translateX(-100%);animation:heroSweep 8s ease-in-out infinite}
+.card,.stat,.item{transition:transform .28s var(--motion),border-color .28s ease,box-shadow .28s ease,background .28s ease}
+.card:hover,.stat:hover{transform:translateY(-3px);border-color:#45d9ff55;box-shadow:0 12px 34px #0005,0 0 22px #45d9ff0b}
+.item:hover{border-color:#27e6a277;transform:translateX(2px)}
+.btn{position:relative;overflow:hidden;transition:transform .2s var(--motion),box-shadow .25s ease,filter .25s ease}
+.btn:hover{transform:translateY(-2px);box-shadow:0 7px 22px #27e6a222;filter:brightness(1.08)}.btn:active{transform:scale(.97)}
+.btn.primary{box-shadow:0 0 0 0 #27e6a255;animation:buttonPulse 4s ease-in-out infinite}
+.tabs button,.bottomnav button{transition:color .2s ease,background .2s ease,transform .2s var(--motion)}.tabs button:active,.bottomnav button:active{transform:scale(.94)}
+.tabs button.active{box-shadow:0 0 18px #27e6a21b}
+.progress i{background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet));background-size:200% 100%;animation:progressFlow 4s linear infinite}
+#view{animation:viewIn .32s var(--motion) both}.section-head h2{background:linear-gradient(90deg,var(--text),var(--green2),var(--cyan));background-clip:text;-webkit-background-clip:text;color:transparent}
+input,select,textarea{transition:border-color .2s ease,box-shadow .2s ease}input:focus,select:focus,textarea:focus{box-shadow:0 0 0 3px #27e6a21c,0 0 20px #45d9ff0b}
+.pill{animation:pillBreathe 5s ease-in-out infinite}
+/* TF branded loading screen: animated monogram, no generic spinner */
+#bootScreen{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;background:radial-gradient(ellipse at 50% 42%,#123c2d 0%,#08110e 42%,#050807 100%);transition:opacity .7s ease,visibility .7s ease}
+#bootScreen.boot-out{opacity:0;visibility:hidden;pointer-events:none}
+.boot-inner{text-align:center;display:grid;justify-items:center;gap:18px;animation:bootEnter .8s var(--motion) both}
+.tf-emblem{width:118px;height:118px;position:relative;display:grid;place-items:center;filter:drop-shadow(0 0 22px #27e6a255)}
+.tf-emblem:before,.tf-emblem:after{content:"";position:absolute;inset:4px;border:1px solid #45d9ff88;clip-path:polygon(25% 0,75% 0,100% 25%,100% 75%,75% 100%,25% 100%,0 75%,0 25%);animation:emblemOrbit 9s linear infinite}
+.tf-emblem:after{inset:13px;border-color:#a78bfa99;transform:rotate(22.5deg);animation-direction:reverse;animation-duration:13s}
+.tf-letters{font-size:45px;font-weight:950;letter-spacing:-.12em;padding-right:.12em;background:linear-gradient(135deg,#fff,var(--green),var(--cyan),var(--violet));background-clip:text;-webkit-background-clip:text;color:transparent;text-shadow:0 0 24px #27e6a244;animation:tfPulse 2s ease-in-out infinite}
+.boot-title{font-size:15px;font-weight:850;letter-spacing:.22em}.boot-signature{font-size:9px;letter-spacing:.25em;color:var(--green2);font-weight:800}.boot-line{width:150px;height:2px;background:#203b30;border-radius:10px;overflow:hidden}.boot-line:after{content:"";display:block;width:42%;height:100%;background:linear-gradient(90deg,var(--green),var(--cyan),var(--violet));animation:bootProgress 1.4s ease-in-out infinite}
+.app{animation:appReveal .8s .15s var(--motion) both}
+.footer-credit{margin:26px 0 18px;text-align:center;color:#849b90;font-size:10px;letter-spacing:.13em}.footer-credit strong{display:block;margin-top:6px;color:var(--green2);font-size:11px;letter-spacing:.17em}
+@keyframes heroRise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+@keyframes viewIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes appReveal{from{opacity:.45;filter:blur(5px)}to{opacity:1;filter:blur(0)}}
+@keyframes bootEnter{from{opacity:0;transform:translateY(16px) scale(.94)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes emblemOrbit{to{transform:rotate(360deg)}}
+@keyframes tfPulse{0%,100%{filter:drop-shadow(0 0 4px #27e6a266);transform:scale(1)}50%{filter:drop-shadow(0 0 15px #45d9ffaa);transform:scale(1.06)}}
+@keyframes bootProgress{0%{transform:translateX(-110%)}100%{transform:translateX(360%)}}
+@keyframes logoGlow{0%,100%{box-shadow:0 0 18px #27e6a233}50%{box-shadow:0 0 30px #45d9ff55}}
+@keyframes logoShine{0%,65%{transform:translateX(-80%) rotate(20deg)}85%,100%{transform:translateX(80%) rotate(20deg)}}
+@keyframes heroSweep{0%,65%{transform:translateX(-100%)}85%,100%{transform:translateX(100%)}}
+@keyframes buttonPulse{0%,100%{box-shadow:0 0 0 0 #27e6a200}50%{box-shadow:0 0 0 5px #27e6a20c}}
+@keyframes progressFlow{to{background-position:200% 0}}
+@keyframes pillBreathe{0%,100%{box-shadow:0 0 0 #27e6a200}50%{box-shadow:0 0 12px #27e6a21c}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+@media(max-width:620px){.tf-emblem{width:104px;height:104px}.tf-letters{font-size:40px}.footer-credit{padding-bottom:4px}}
+
+</style>
+</head>
+<body>
+<div id="bootScreen" aria-label="Final Countdown loading screen">
+ <div class="boot-inner">
+  <div class="tf-emblem"><span class="tf-letters">TF</span></div>
+  <div class="boot-title">FINAL COUNTDOWN</div>
+  <div class="boot-signature">T-A-H-S-I-N F-A-I-S-A-L</div>
+  <div class="boot-line"></div>
+  <small style="color:#91a49b;letter-spacing:.12em">PREPARING YOUR STUDY SPACE</small>
+ </div>
+</div>
+<div class="app">
+<header><div class="brand"><div class="logo">FC</div><div><h1>FINAL COUNTDOWN</h1><small class="signature">T-A-H-S-I-N F-A-I-S-A-L</small><small>Your personal study command centre</small></div></div><div class="header-right"><div class="date" id="today"></div><div id="authArea"><button class="btn small" onclick="signInGoogle()">Sign in with Google</button></div></div></header>
+<section class="hero">
+ <div class="eyebrow">Mission: SSC success</div><h2>Small steps.<br>Big results.</h2><p>Your subjects, notes, plans and progress — organized in one place.</p>
+ <div class="countdown" id="countdown"><div class="timebox"><strong>—</strong><span>Days</span></div><div class="timebox"><strong>—</strong><span>Hours</span></div><div class="timebox"><strong>—</strong><span>Minutes</span></div></div>
+ <div class="actions"><button class="btn primary" onclick="showTab('tasks')">＋ Add a task</button><button class="btn" onclick="showTab('chapters')">Track chapters</button></div>
+</section>
+<div class="stats"><div class="stat"><strong id="taskStat">0/0</strong><span>Tasks completed</span></div><div class="stat"><strong id="chapterStat">0%</strong><span>Chapter progress</span></div><div class="stat"><strong id="noteStat">0</strong><span>Saved notes</span></div></div>
+<nav class="tabs" id="tabs">
+<button class="active" data-tab="home">Overview</button><button data-tab="subjects">Subjects</button><button data-tab="chapters">Chapters</button><button data-tab="syllabus">Syllabus</button><button data-tab="notes">Notes</button><button data-tab="tasks">To-do</button><button data-tab="routine">Routine</button><button data-tab="studytime">Study Time</button><button data-tab="homework">Homework</button><button data-tab="formulas">Formulas</button><button data-tab="vocab">Vocabulary</button><button data-tab="results">Results</button>
+</nav>
+<main id="view"></main>
+<p class="notice"><span id="saveNotice">🔒 Guest data is saved on this device. Sign in with Google to sync your own study data across devices.</span></p>
+<footer class="footer-credit">A PERSONAL STUDY EXPERIENCE<strong>THIS WAS MADE BY TAHSIN FOR THE EGO BY THE EGO</strong></footer>
+</div>
+<div class="bottomnav"><div><button class="active" data-tab="home"><b>⌂</b>Home</button><button data-tab="subjects"><b>▤</b>Subjects</button><button data-tab="tasks"><b>☑</b>Tasks</button><button data-tab="studytime"><b>◷</b>Study time</button><button data-tab="notes"><b>✎</b>Notes</button><button data-tab="settings"><b>⚙</b>Settings</button></div></div>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
+<script>
+// Replace these placeholders with your Firebase project web-app configuration.
+const firebaseConfig = {
+  apiKey: "YOUR_FIREBASE_API_KEY",
+  authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+  projectId: "YOUR_PROJECT_ID",
+  storageBucket: "YOUR_PROJECT_ID.appspot.com",
+  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+  appId: "YOUR_FIREBASE_APP_ID"
+};
+
+const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const KEY='finalCountdownDataV1';
+const defaults={examDate:'2027-02-01',examLabel:'SSC Examination',subjects:['Bangla 1st Paper','Bangla 2nd Paper','English 1st Paper','English 2nd Paper','General Mathematics','Higher Mathematics','Science','Physics','Chemistry','Biology','Bangladesh & Global Studies','Islam & Moral Education','ICT'],chapters:[],syllabus:[],notes:[],tasks:[],routine:[],homework:[],formulas:[],vocab:[],results:[],studySessions:[],activeStudy:null,calendarMonth:null};
+let currentUser=null, cloudReady=false, tab='home';
+function activeStorageKey(){return currentUser?KEY+':'+currentUser.uid:KEY}
+function readLocalData(key){try{return {...defaults,...JSON.parse(localStorage.getItem(key)||'{}')}}catch{return {...defaults}}}
+let data=readLocalData(KEY);
+let cloudTimer=null;
+function save(){localStorage.setItem(activeStorageKey(),JSON.stringify(data));render();updateStats();if(currentUser&&cloudReady)syncCloudData()}
+function syncCloudData(){
+ if(!currentUser||!cloudReady||!window.firebaseDb)return;
+ clearTimeout(cloudTimer);
+ cloudTimer=setTimeout(async()=>{
+   try{
+     await firebaseDb.collection('users').doc(currentUser.uid).collection('privateData').doc('studyHub').set({data:data,updatedAt:firebase.firestore.FieldValue.serverTimestamp()});
+     const n=$('#saveNotice');if(n)n.textContent='☁️ Synced to your Google account. Your study data is private to this account.';
+   }catch(err){console.error('Cloud save failed:',err);const n=$('#saveNotice');if(n)n.textContent='⚠️ Cloud sync failed. Your changes are still saved on this device; check your connection and Firebase setup.'}
+ },450);
+}
+async function signInGoogle(){
+ if(!window.firebaseAuth){alert('Firebase is not configured yet. Add your Firebase web-app settings in index.html first.');return}
+ try{const provider=new firebase.auth.GoogleAuthProvider();provider.setCustomParameters({prompt:'select_account'});await firebaseAuth.signInWithPopup(provider)}
+ catch(err){if(['auth/popup-blocked','auth/popup-closed-by-user','auth/operation-not-supported-in-this-environment'].includes(err.code)){try{await firebaseAuth.signInWithRedirect(new firebase.auth.GoogleAuthProvider())}catch(e){alert('Google sign-in could not start: '+e.message)}}else{alert('Google sign-in failed: '+err.message)}}
+}
+async function signOutGoogle(){if(!window.firebaseAuth)return;try{await firebaseAuth.signOut()}catch(e){alert('Sign out failed: '+e.message)}}
+function renderAuth(){const area=$('#authArea'),notice=$('#saveNotice');if(!area)return;if(currentUser){area.innerHTML=`<div class="auth-user">${esc(currentUser.email||'Google account')}</div><button class="btn small" onclick="signOutGoogle()">Sign out</button>`;if(notice)notice.textContent='☁️ Signed in. Your study data syncs privately to this Google account.'}else{area.innerHTML='<button class="btn small" onclick="signInGoogle()">Sign in with Google</button>';if(notice)notice.textContent='🔒 Guest data is saved on this device. Sign in with Google to sync a separate account across devices.'}}
+async function handleAuthState(user){
+ cloudReady=false;currentUser=user||null;renderAuth();
+ if(!user){data=readLocalData(KEY);render();updateStats();return}
+ const perUserKey=KEY+':'+user.uid;
+ try{
+   const snap=await firebaseDb.collection('users').doc(user.uid).collection('privateData').doc('studyHub').get();
+   if(snap.exists&&snap.data().data){data={...defaults,...snap.data().data};localStorage.setItem(perUserKey,JSON.stringify(data))}
+   else{data=readLocalData(perUserKey);await firebaseDb.collection('users').doc(user.uid).collection('privateData').doc('studyHub').set({data:data,updatedAt:firebase.firestore.FieldValue.serverTimestamp()})}
+   cloudReady=true;localStorage.setItem(perUserKey,JSON.stringify(data));render();updateStats();renderAuth();
+ }catch(err){console.error('Cloud load failed:',err);data=readLocalData(perUserKey);render();updateStats();const n=$('#saveNotice');if(n)n.textContent='⚠️ Could not load cloud data. Local account data is shown; check Firebase setup and internet.'}
+}
+function updateStats(){let done=data.tasks.filter(x=>x.done).length;$('#taskStat').textContent=`${done}/${data.tasks.length}`;let units=data.syllabus.length?data.syllabus:data.chapters.map(x=>({done:!!x.done}));let total=units.length,finished=units.filter(x=>x.done).length;$('#chapterStat').textContent=total?Math.round(finished/total*100)+'%':'0%';$('#noteStat').textContent=data.notes.length}
+
+function localDateKey(d){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function startStudy(){if(data.activeStudy){alert('A study session is already running.');return}const subject=$('#studySubject')?.value||'General';data.activeStudy={startedAt:Date.now(),subject};save();startLiveTicker()}
+function stopStudy(){if(!data.activeStudy)return;const a=data.activeStudy,end=Date.now(),start=new Date(a.startedAt),finish=new Date(end),duration=Math.max(0,end-a.startedAt);if(duration<1000){alert('Study for at least a moment before ending the session.');return}data.studySessions.push({id:id(),subject:a.subject,date:localDateKey(start),startedAt:a.startedAt,endedAt:end,duration,startLabel:start.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'}),endLabel:finish.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'})});data.activeStudy=null;save()}
+function moveCalendar(delta){let m=data.calendarMonth?new Date(data.calendarMonth+'-01T12:00:00'):new Date();m.setMonth(m.getMonth()+delta);data.calendarMonth=`${m.getFullYear()}-${String(m.getMonth()+1).padStart(2,'0')}`;render()}
+function startLiveTicker(){if(window.studyTicker)clearInterval(window.studyTicker);window.studyTicker=setInterval(()=>{let el=$('#liveTimer');if(el&&data.activeStudy){let ms=Date.now()-data.activeStudy.startedAt,mins=Math.floor(ms/60000),sec=Math.floor(ms/1000)%60,h=Math.floor(mins/60),m=mins%60;el.textContent=h?`${h}h ${m}m ${sec}s`:`${m}m ${sec}s`}},1000)}
+
+function updateCountdown(){let target=new Date(data.examDate+'T00:00:00'),diff=Math.max(0,target-new Date()),d=Math.floor(diff/86400000),h=Math.floor(diff%86400000/3600000),m=Math.floor(diff%3600000/60000);$('#countdown').innerHTML=`<div class="timebox"><strong>${d}</strong><span>Days</span></div><div class="timebox"><strong>${h}</strong><span>Hours</span></div><div class="timebox"><strong>${m}</strong><span>Minutes</span></div>`;$('#today').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}
+function showTab(t){tab=t;document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));render();const view=$('#view');if(view){view.style.animation='none';requestAnimationFrame(()=>{view.style.animation='';});}window.scrollTo({top:0,behavior:'smooth'})}
+document.querySelectorAll('[data-tab]').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function heading(title,button=''){return `<div class="section-head"><h2>${title}</h2>${button}</div>`}
+function empty(msg){return `<div class="empty">${msg}</div>`}
+function itemList(arr,fn,emptyMsg){return arr.length?`<div class="stack">${arr.map(fn).join('')}</div>`:empty(emptyMsg)}
+function del(type,id){data[type]=data[type].filter(x=>x.id!==id);save()}
+function addForm(title,fields,submitText,handler){return `<div class="card"><h3>${title}</h3><form onsubmit="${handler}(event)">${fields}<button class="btn primary" type="submit">${submitText}</button></form></div>`}
+function field(label,name,placeholder='',type='text',required=true){return `<div class="field"><label>${label}</label><input name="${name}" type="${type}" placeholder="${placeholder}" ${required?'required':''}></div>`}
+function selectField(label,name,opts){return `<div class="field"><label>${label}</label><select name="${name}">${opts.map(x=>`<option>${esc(x)}</option>`).join('')}</select></div>`}
+function render(){
+let v='';
+if(tab==='home'){
+let upcoming=data.tasks.filter(x=>!x.done).slice(0,4),recent=data.notes.slice(-3).reverse();
+v=heading('Your overview')+`<div class="grid"><div class="card"><h3>🎯 Next up</h3>${itemList(upcoming,x=>`<div class="item"><div class="row"><span>${esc(x.title)}</span><span class="pill">${esc(x.date||'No date')}</span></div><small>${esc(x.subject||'General')}</small></div>`,'No pending tasks. Add one in To-do.')}</div><div class="card"><h3>📚 Recent notes</h3>${itemList(recent,x=>`<div class="item"><b>${esc(x.title)}</b><br><small>${esc(x.subject||'General')}</small></div>`,'Your saved notes will appear here.')}</div></div><div class="card" style="margin-top:12px"><div class="row"><h3>⚡ Quick actions</h3><span class="pill">STUDY MODE</span></div><div class="actions"><button class="btn small" onclick="showTab('notes')">＋ Note</button><button class="btn small" onclick="showTab('homework')">＋ Homework</button><button class="btn small" onclick="showTab('results')">＋ Result</button><button class="btn small" onclick="showTab('routine')">＋ Routine</button></div></div>`;
+}
+if(tab==='subjects'){
+v=heading('My subjects')+`<div class="card"><p class="muted">Your default SSC subject list. Add or remove subjects to match your syllabus.</p><div class="stack">${data.subjects.map((s,i)=>`<div class="item row"><span>${esc(s)}</span><button class="delete" onclick="removeSubject(${i})">Remove</button></div>`).join('')}</div><form onsubmit="addSubject(event)" class="row" style="margin-top:12px"><input name="subject" placeholder="Add a subject" required><button class="btn primary">Add</button></form></div>`;
+}
+if(tab==='chapters'){
+v=heading('Chapter tracker')+addForm('Add a chapter',selectField('Subject','subject',data.subjects)+field('Chapter name','name','e.g. Trigonometry')+selectField('Status','status',['Not started','In progress','Completed']),'Add chapter','addChapter')+`<div class="card"><h3>Your syllabus progress</h3>${itemList(data.chapters,(x)=>`<div class="item"><div class="row"><div><b>${esc(x.name)}</b><br><small>${esc(x.subject)}</small></div><select style="width:auto;max-width:135px" onchange="setChapter('${x.id}',this.value)"><option ${x.status==='Not started'?'selected':''}>Not started</option><option ${x.status==='In progress'?'selected':''}>In progress</option><option ${x.status==='Completed'?'selected':''}>Completed</option></select></div><div class="progress"><i style="width:${x.status==='Completed'?100:x.status==='In progress'?50:0}%"></i></div><button class="delete" onclick="del('chapters','${x.id}')">Delete</button></div>`,'Add chapters to see your progress.')}</div>`;
+}
+if(tab==='syllabus'){
+ const subjectsWithTopics=data.subjects.map(subject=>{
+   const items=data.syllabus.filter(x=>x.subject===subject);
+   const done=items.filter(x=>x.done).length;
+   return {subject,items,done,total:items.length,pct:items.length?Math.round(done/items.length*100):0};
+ });
+ const allDone=data.syllabus.filter(x=>x.done).length;
+ const overall=data.syllabus.length?Math.round(allDone/data.syllabus.length*100):0;
+ const cards=subjectsWithTopics.map(s=>`<div class="item">
+   <div class="row"><b>${esc(s.subject)}</b><strong style="color:var(--green2)">${s.pct}%</strong></div>
+   <div class="progress"><i style="width:${s.pct}%"></i></div>
+   <small>${s.done} of ${s.total} topics completed${s.total?'':' · Upload or add this subject’s syllabus'}</small>
+   ${s.total?`<div class="actions"><button class="btn small" onclick="showSyllabusSubject('${esc(s.subject).replace(/'/g,"&#39;")}')">View topics</button></div>`:''}
+ </div>`).join('');
+ const activeSubject=window.syllabusSubjectFilter||'';
+ const visibleItems=data.syllabus.filter(x=>!activeSubject||x.subject===activeSubject);
+ v=heading('Syllabus progress')+`
+ <div class="stats" style="margin-top:0">
+  <div class="stat"><strong>${overall}%</strong><span>Overall syllabus done</span></div>
+  <div class="stat"><strong>${allDone}/${data.syllabus.length}</strong><span>Topics completed</span></div>
+  <div class="stat"><strong>${data.subjects.filter(s=>data.syllabus.some(x=>x.subject===s)).length}/${data.subjects.length}</strong><span>Subjects added</span></div>
+ </div>
+ <div class="card"><div class="row"><h3>Overall syllabus completion</h3><b style="color:var(--green2)">${overall}%</b></div><div class="progress"><i style="width:${overall}%"></i></div>
+ <p class="muted" style="font-size:12px;margin-bottom:0">Every topic counts as one unit. A subject’s percentage is based on its own uploaded or entered topics; overall percentage combines all topics from all subjects.</p></div>
+ <div class="card" style="margin-top:12px"><h3>Upload or add a syllabus</h3>
+ <p class="muted" style="font-size:12px">Choose a subject, then upload a text-based PDF, TXT or CSV file. You can also paste the chapter/topic list below, one topic per line. Review the extracted list before saving.</p>
+ <form onsubmit="addSyllabusTopics(event)">
+  <div class="field"><label>Subject</label><select name="subject">${data.subjects.map(s=>`<option>${esc(s)}</option>`).join('')}</select></div>
+  <div class="field"><label>Upload syllabus file (PDF, TXT or CSV)</label><input id="syllabusFile" type="file" accept=".pdf,.txt,.csv,text/plain,text/csv,application/pdf" onchange="loadSyllabusFile(event)"></div>
+  <div class="field"><label>Chapters / topics — one per line</label><textarea id="syllabusTopics" name="topics" placeholder="Chapter 1: Real Numbers&#10;Chapter 2: Sets and Functions&#10;Chapter 3: Algebra" required></textarea></div>
+  <button class="btn primary" type="submit">Save topics to syllabus</button>
+ </form>
+ <p class="muted" style="font-size:11px;margin-bottom:0">Scanned/image-only PDFs may not contain selectable text. For those, paste the topic names manually. Existing topics are kept when you add another file.</p>
+ </div>
+ <div class="card" style="margin-top:12px"><h3>Progress by subject</h3>${cards||empty('Add subjects to begin.')}</div>
+ <div class="card" style="margin-top:12px"><div class="row"><h3>Topic checklist</h3><select style="width:auto;max-width:170px" onchange="filterSyllabus(this.value)"><option value="">All subjects</option>${data.subjects.map(s=>`<option value="${esc(s)}" ${activeSubject===s?'selected':''}>${esc(s)}</option>`).join('')}</select></div>
+ ${itemList(visibleItems,x=>`<div class="item row"><label class="checkline"><input type="checkbox" ${x.done?'checked':''} onchange="toggleSyllabus('${x.id}')"><span><span class="item-title" style="${x.done?'text-decoration:line-through;color:#82958b':''}">${esc(x.title)}</span><br><small>${esc(x.subject)}</small></span></label><button class="delete" onclick="del('syllabus','${x.id}')">Delete</button></div>`,'No syllabus topics yet. Upload a file or paste topics above.')}</div>`;
+}
+if(tab==='notes'){
+v=heading('My notes')+addForm('Save a note',field('Title','title','Note title')+selectField('Subject','subject',data.subjects)+`<div class="field"><label>Note content</label><textarea name="body" placeholder="Write your key points, definitions or explanations..." required></textarea></div>`,'Save note','addNote')+`<div class="card"><h3>Saved notes</h3>${itemList([...data.notes].reverse(),x=>`<div class="item"><div class="row"><b>${esc(x.title)}</b><button class="delete" onclick="del('notes','${x.id}')">Delete</button></div><small>${esc(x.subject)} · ${esc(x.date)}</small><p style="white-space:pre-wrap;margin-bottom:0">${esc(x.body)}</p></div>`,'No notes saved yet.')}</div>`;
+}
+if(tab==='tasks'){
+v=heading('To-do list')+addForm('Add a task',field('Task','title','What do you need to do?')+`<div class="form-grid">${selectField('Subject','subject',['General',...data.subjects])}${field('Due date','date','','date',false)}</div>`,'Add task','addTask')+`<div class="card"><h3>All tasks</h3>${itemList(data.tasks,(x)=>`<div class="item row"><label class="checkline"><input type="checkbox" ${x.done?'checked':''} onchange="toggleTask('${x.id}')"><span><span class="item-title" style="${x.done?'text-decoration:line-through;color:#82958b':''}">${esc(x.title)}</span><br><small>${esc(x.subject)} · ${esc(x.date||'No due date')}</small></span></label><button class="delete" onclick="del('tasks','${x.id}')">Delete</button></div>`,'No tasks yet.')}</div>`;
+}
+if(tab==='routine'){
+v=heading('Study routine')+addForm('Add a study session',selectField('Day','day',['Every day','Saturday','Sunday','Monday','Tuesday','Wednesday','Thursday','Friday'])+field('Subject / activity','subject','e.g. General Math')+`<div class="form-grid">${field('Start time','start','','time')}${field('End time','end','','time')}</div>`,'Add session','addRoutine')+`<div class="card"><h3>Weekly schedule</h3>${itemList(data.routine,(x)=>`<div class="item row"><div><b>${esc(x.day)} · ${esc(x.subject)}</b><br><small>${esc(x.start)} – ${esc(x.end)}</small></div><button class="delete" onclick="del('routine','${x.id}')">Delete</button></div>`,'No sessions planned yet.')}</div>`;
+}
+
+if(tab==='studytime'){
+ const now=new Date(), month=data.calendarMonth?new Date(data.calendarMonth+'-01T00:00:00'):new Date();
+ const y=month.getFullYear(), mo=month.getMonth(), first=new Date(y,mo,1), days=new Date(y,mo+1,0).getDate();
+ const offset=(first.getDay()+6)%7;
+ const totals={}; data.studySessions.forEach(x=>{totals[x.date]=(totals[x.date]||0)+x.duration});
+ const todayKey=localDateKey(new Date()), active=data.activeStudy;
+ const activeElapsed=active?Math.max(0,Date.now()-active.startedAt):0;
+ const fmt=ms=>{let mins=Math.floor(ms/60000),h=Math.floor(mins/60),m=mins%60;return h?`${h}h ${m}m`:`${m}m`};
+ const calCells=Array.from({length:offset},()=>'<div></div>').concat(Array.from({length:days},(_,i)=>{let d=i+1,key=`${y}-${String(mo+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`,ms=totals[key]||0;return `<div class="calday ${key===todayKey?'today':''} ${ms?'hasstudy':''}" title="${fmt(ms)}"><b>${d}</b>${ms?`<small>${fmt(ms)}</small>`:''}</div>`}));
+ v=heading('Study time tracker')+`<div class="card"><div class="row"><div><span class="eyebrow">LIVE SESSION</span><h3 style="margin:5px 0 0">${active?'Study session in progress':'Ready when you are'}</h3></div><span class="pill">${active?'RECORDING':'NOT STARTED'}</span></div>
+ <div class="timer-display" id="liveTimer">${fmt(activeElapsed)}</div>
+ <div class="field"><label>What are you studying?</label><select id="studySubject">${['General',...data.subjects].map(x=>`<option ${active&&active.subject===x?'selected':''}>${esc(x)}</option>`).join('')}</select></div>
+ <div class="actions">${active?`<button class="btn primary" onclick="stopStudy()">■ End study & save</button>`:`<button class="btn primary" onclick="startStudy()">▶ Start studying</button>`}</div>
+ <p class="muted" style="font-size:12px;margin-bottom:0">${active?`Started at ${new Date(active.startedAt).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}. Your timer continues if you switch tabs or close and reopen the app.`:'Tap Start when you begin. Tap End when you finish; the app records the duration automatically.'}</p></div>
+ <div class="card" style="margin-top:12px"><div class="row"><h3>Daily study calendar</h3><div class="row"><button class="btn small" onclick="moveCalendar(-1)">‹</button><b>${month.toLocaleDateString(undefined,{month:'long',year:'numeric'})}</b><button class="btn small" onclick="moveCalendar(1)">›</button></div></div>
+ <div class="calendar-grid">${['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(x=>`<div class="weekday">${x}</div>`).join('')}${calCells.join('')}</div>
+ <div class="legend"><span><i></i> Study recorded</span><span>Total today: <b>${fmt(totals[todayKey]||0)}</b></span></div></div>
+ <div class="card" style="margin-top:12px"><h3>Today's study sessions</h3>${itemList(data.studySessions.filter(x=>x.date===todayKey).slice().reverse(),x=>`<div class="item row"><div><b>${esc(x.subject)}</b><br><small>${esc(x.startLabel)} – ${esc(x.endLabel)}</small></div><span class="pill">${fmt(x.duration)}</span></div>`,'No study sessions saved today yet.')}</div>
+ <div class="card" style="margin-top:12px"><h3>Recent daily totals</h3>${itemList(Object.entries(totals).sort((a,b)=>b[0].localeCompare(a[0])).slice(0,7),([day,ms])=>`<div class="item row"><span>${new Date(day+'T12:00:00').toLocaleDateString(undefined,{weekday:'short',month:'short',day:'numeric'})}</span><b style="color:var(--green2)">${fmt(ms)}</b></div>`,'Your daily study totals will appear here.')}</div>`;
+}
+
+if(tab==='homework'){
+v=heading('Homework tracker')+addForm('Add homework',field('Homework / assignment','title','Describe the work')+selectField('Subject','subject',data.subjects)+field('Deadline','date','','date',false),'Add homework','addHomework')+`<div class="card"><h3>Assignments</h3>${itemList(data.homework,(x)=>`<div class="item row"><div><b>${esc(x.title)}</b><br><small>${esc(x.subject)} · ${esc(x.date||'No deadline')}</small></div><div><button class="btn small" onclick="toggleHomework('${x.id}')">${x.done?'Done ✓':'Mark done'}</button> <button class="delete" onclick="del('homework','${x.id}')">×</button></div></div>`,'No homework added.')}</div>`;
+}
+if(tab==='formulas'){
+v=heading('Important formulas')+addForm('Save a formula',field('Topic / title','title','e.g. Trigonometry')+`<div class="field"><label>Formula / explanation</label><textarea name="body" placeholder="Write the formula and a short note..." required></textarea></div>`,'Save formula','addFormula')+`<div class="card"><h3>Formula library</h3>${itemList([...data.formulas].reverse(),x=>`<div class="item"><div class="row"><b>${esc(x.title)}</b><button class="delete" onclick="del('formulas','${x.id}')">Delete</button></div><p style="white-space:pre-wrap;margin-bottom:0">${esc(x.body)}</p></div>`,'Save important formulas for quick revision.')}</div>`;
+}
+if(tab==='vocab'){
+v=heading('English vocabulary')+addForm('Add a word',field('Word','word','New word')+field('Meaning','meaning','Meaning in Bangla or English')+field('Example sentence','example','Use it in a sentence', 'text',false),'Save word','addVocab')+`<div class="card"><h3>My vocabulary list</h3>${itemList([...data.vocab].reverse(),x=>`<div class="item"><div class="row"><b>${esc(x.word)}</b><button class="delete" onclick="del('vocab','${x.id}')">Delete</button></div><p style="margin:5px 0">${esc(x.meaning)}</p><small>${esc(x.example)}</small></div>`,'Build your vocabulary one word at a time.')}</div>`;
+}
+if(tab==='results'){
+v=heading('Results & marks')+addForm('Add exam result',field('Exam name','exam','e.g. Half-yearly')+selectField('Subject','subject',data.subjects)+`<div class="form-grid">${field('Marks obtained','marks','e.g. 82','number')}${field('Full marks','full','e.g. 100','number')}</div>`,'Save result','addResult')+`<div class="card"><h3>Performance record</h3>${itemList([...data.results].reverse(),x=>`<div class="item row"><div><b>${esc(x.exam)} · ${esc(x.subject)}</b><br><small>${x.marks}/${x.full} marks · ${Math.round(x.marks/x.full*100)}%</small></div><button class="delete" onclick="del('results','${x.id}')">Delete</button></div>`,'Your saved marks will appear here.')}</div>`;
+}
+if(tab==='settings'){
+v=heading('Settings & backup')+`<div class="card"><h3>Google account & cloud sync</h3><p class="muted">${currentUser?'Signed in as '+esc(currentUser.email)+'. Your records are saved in a private space linked to this Google account.':'You are using guest mode. Sign in with Google to keep a separate cloud-saved study history for this account.'}</p><div class="actions">${currentUser?'<button class="btn" onclick="signOutGoogle()">Sign out</button>':'<button class="btn primary" onclick="signInGoogle()">Continue with Google</button>'}</div><p class="muted" style="font-size:11px">Different Google accounts have separate study data. To move your data to another account, export a backup and import it after signing in to that account.</p></div><div class="card" style="margin-top:12px"><h3>Exam countdown</h3><form onsubmit="setExam(event)">${field('Exam name','label','SSC Examination')}${field('Exam date','date',data.examDate,'date')}<button class="btn primary">Update countdown</button></form></div><div class="card" style="margin-top:12px"><h3>Backup your study data</h3><p class="muted">Export a JSON backup to keep a copy of your notes, tasks and progress. Import it later on this device or another browser.</p><div class="actions"><button class="btn primary" onclick="exportData()">Export backup</button><label class="btn">Import backup<input type="file" accept="application/json" onchange="importData(event)" hidden></label></div><button class="delete" style="margin-top:14px" onclick="clearData()">Reset all app data</button></div><div class="card" style="margin-top:12px"><h3>About</h3><p class="muted">Final Countdown is a personal study organizer. Guest data stays on this device. When Google sign-in and Firebase are configured, each account syncs its own study data across devices.</p></div>`;
+}
+$('#view').innerHTML=v;
+}
+function id(){return Date.now().toString(36)+Math.random().toString(36).slice(2,7)}
+function get(e){return Object.fromEntries(new FormData(e.target))}
+function submit(e,fn){e.preventDefault();fn(get(e));e.target.reset();save()}
+function addSyllabusTopics(e){
+ e.preventDefault();
+ const fd=new FormData(e.target),subject=String(fd.get('subject')||''),raw=String(fd.get('topics')||'');
+ const lines=raw.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);
+ if(!lines.length){alert('Add at least one topic.');return}
+ const existing=new Set(data.syllabus.filter(x=>x.subject===subject).map(x=>x.title.toLowerCase()));
+ let added=0;
+ lines.forEach(line=>{
+   const title=line.replace(/^[\s•\-*]+/,'').replace(/^\d+[\).:\-]\s*/,'').trim();
+   if(title&&!existing.has(title.toLowerCase())){data.syllabus.push({id:id(),subject,title,done:false});existing.add(title.toLowerCase());added++}
+ });
+ window.syllabusSubjectFilter=subject;
+ save();
+ alert(`${added} topic(s) added to ${subject}.`);
+}
+function toggleSyllabus(i){const x=data.syllabus.find(x=>x.id===i);if(x){x.done=!x.done;save()}}
+function filterSyllabus(value){window.syllabusSubjectFilter=value;render()}
+function showSyllabusSubject(subject){window.syllabusSubjectFilter=subject;render();document.querySelector('#syllabusTopics')?.scrollIntoView({behavior:'smooth',block:'center'})}
+async function loadSyllabusFile(event){
+ const file=event.target.files?.[0];if(!file)return;
+ const box=$('#syllabusTopics');
+ try{
+   let text='';
+   if(file.name.toLowerCase().endsWith('.pdf')){
+     text=await extractPdfText(file);
+   }else{
+     text=await file.text();
+   }
+   if(file.name.toLowerCase().endsWith('.csv')){
+     text=text.split(/\r?\n/).map(row=>row.split(',')[0].replace(/^"|"$/g,'').trim()).filter(Boolean).join('\n');
+   }
+   const cleaned=text.split(/\r?\n/).map(line=>line.replace(/\s+/g,' ').trim()).filter(line=>{
+     if(!line)return false;
+     if(/^(page\s+\d+|contents|table of contents|syllabus|subject name|chapter\s+name)$/i.test(line))return false;
+     return true;
+   });
+   if(!cleaned.length)throw new Error('No readable text found');
+   box.value=cleaned.join('\n');
+   alert(`Read ${cleaned.length} lines from ${file.name}. Check the list, then tap “Save topics to syllabus”.`);
+ }catch(err){
+   alert(file.name.toLowerCase().endsWith('.pdf')?'Could not read text from this PDF. It may be scanned or image-only; paste the topic names manually.':'Could not read that file. Try a TXT or CSV file.');
+ }
+}
+async function extractPdfText(file){
+ if(!window.pdfjsLib){
+   await new Promise((resolve,reject)=>{
+     const script=document.createElement('script');
+     script.src='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js';
+     script.onload=resolve;script.onerror=()=>reject(new Error('PDF reader unavailable'));
+     document.head.appendChild(script);
+   });
+ }
+ window.pdfjsLib.GlobalWorkerOptions.workerSrc='https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';
+ const bytes=await file.arrayBuffer(),pdf=await window.pdfjsLib.getDocument({data:bytes}).promise;
+ const lines=[];
+ for(let pageNo=1;pageNo<=pdf.numPages;pageNo++){
+   const page=await pdf.getPage(pageNo),content=await page.getTextContent();
+   let current='',lastY=null;
+   for(const item of content.items){
+     const y=item.transform?.[5];
+     if(lastY!==null&&y!==undefined&&Math.abs(y-lastY)>4){if(current.trim())lines.push(current.trim());current=''}
+     current+=(item.str||'')+' ';if(y!==undefined)lastY=y;
+   }
+   if(current.trim())lines.push(current.trim());
+ }
+ return lines.join('\n');
+}
+function addChapter(e){submit(e,x=>data.chapters.push({id:id(),...x,done:x.status==='Completed'}))}
+function addNote(e){submit(e,x=>data.notes.push({id:id(),...x,date:new Date().toLocaleDateString()}))}
+function addTask(e){submit(e,x=>data.tasks.push({id:id(),...x,done:false}))}
+function addRoutine(e){submit(e,x=>data.routine.push({id:id(),...x}))}
+function addHomework(e){submit(e,x=>data.homework.push({id:id(),...x,done:false}))}
+function addFormula(e){submit(e,x=>data.formulas.push({id:id(),...x}))}
+function addVocab(e){submit(e,x=>data.vocab.push({id:id(),...x}))}
+function addResult(e){submit(e,x=>{if(+x.full>0&&+x.marks>=0)data.results.push({id:id(),...x,marks:+x.marks,full:+x.full})})}
+function addSubject(e){e.preventDefault();let s=new FormData(e.target).get('subject').trim();if(s&&!data.subjects.includes(s))data.subjects.push(s);save()}
+function removeSubject(i){if(confirm('Remove this subject from the subject list? Existing saved entries will remain.')){data.subjects.splice(i,1);save()}}
+function setChapter(i,status){let x=data.chapters.find(x=>x.id===i);if(x){x.status=status;x.done=status==='Completed';save()}}
+function toggleTask(i){let x=data.tasks.find(x=>x.id===i);x.done=!x.done;save()}
+function toggleHomework(i){let x=data.homework.find(x=>x.id===i);x.done=!x.done;save()}
+function setExam(e){submit(e,x=>{data.examLabel=x.label||'SSC Examination';data.examDate=x.date||data.examDate})}
+function exportData(){let a=document.createElement('a'),blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});a.href=URL.createObjectURL(blob);a.download='final-countdown-backup.json';a.click();URL.revokeObjectURL(a.href)}
+function importData(e){let f=e.target.files[0];if(!f)return;let r=new FileReader();r.onload=()=>{try{let x=JSON.parse(r.result);if(!x.subjects||!Array.isArray(x.subjects))throw Error();data={...defaults,...x};save();alert('Backup imported successfully.')}catch{alert('That backup file could not be read.')}};r.readAsText(f)}
+function clearData(){if(confirm('This will erase all study data saved in this browser. Export a backup first if needed.')){localStorage.removeItem(activeStorageKey());data={...defaults};save()}}
+if('serviceWorker'in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('./sw.js').catch(()=>{}));
+updateCountdown();setInterval(updateCountdown,60000);updateStats();render();renderAuth();if(data.activeStudy)startLiveTicker();window.addEventListener('load',()=>setTimeout(()=>$('#bootScreen')?.classList.add('boot-out'),950));setTimeout(()=>$('#bootScreen')?.classList.add('boot-out'),3200);
+// Firebase initialization: this runs only after you replace the placeholder config above.
+if(!firebaseConfig.apiKey.startsWith('YOUR_')){
+ try{firebase.initializeApp(firebaseConfig);window.firebaseAuth=firebase.auth();window.firebaseDb=firebase.firestore();firebaseAuth.onAuthStateChanged(handleAuthState)}
+ catch(err){console.error('Firebase initialization error:',err);const n=$('#saveNotice');if(n)n.textContent='⚠️ Firebase setup error. Check your Firebase configuration.'}
+}
+</script>
+</body></html>
